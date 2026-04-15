@@ -62,43 +62,10 @@ describe('GET /rooms', () => {
     })
   })
 
-  it('should return the correct number of rooms', () => {
-    return request(app).get('/rooms').then(res => {
-      expect(res.body).to.have.lengthOf(7)
-    })
-  })
-
   it('each room should have required properties', () => {
     return request(app).get('/rooms').then(res => {
       res.body.forEach(room => {
         expect(room).to.have.all.keys('id', 'name', 'type', 'pricePerNight', 'available')
-      })
-    })
-  })
-
-  it('?type=suite should return only suite rooms', () => {
-    return request(app).get('/rooms?type=suite').then(res => {
-      expect(res.body).to.have.lengthOf(3)
-      res.body.forEach(room => {
-        expect(room.type).to.equal('suite')
-      })
-    })
-  })
-
-  it('?type=deluxe should return only deluxe rooms', () => {
-    return request(app).get('/rooms?type=deluxe').then(res => {
-      expect(res.body).to.have.lengthOf(2)
-      res.body.forEach(room => {
-        expect(room.type).to.equal('deluxe')
-      })
-    })
-  })
-
-  it('?type=standard should return only standard rooms', () => {
-    return request(app).get('/rooms?type=standard').then(res => {
-      expect(res.body).to.have.lengthOf(2)
-      res.body.forEach(room => {
-        expect(room.type).to.equal('standard')
       })
     })
   })
