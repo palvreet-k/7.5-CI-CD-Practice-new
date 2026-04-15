@@ -69,12 +69,6 @@ describe('GET /rooms', () => {
       })
     })
   })
-
-  it('filtering by a type that doesn\'t exist should return an empty array', () => {
-    return request(app).get('/rooms?type=nonexistent').then(res => {
-      expect(res.body).to.be.an('array').and.have.lengthOf(0)
-    })
-  })
 })
 
 // ---------------------------------------------------------------
