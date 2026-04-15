@@ -26,7 +26,7 @@ app.get('/rooms', (req, res) => {
     const filtered = rooms.filter(r => r.type === type)
     return res.json(filtered)
   }
-  res.json(null)
+  res.json(rooms)
 })
 
 // GET /rooms/:id - return a single room by id
